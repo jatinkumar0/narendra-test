@@ -12,9 +12,7 @@ agent any
       stage ('Deploy'){
       steps {
       sh ''' 
-      sudo pm2 delete all
-      sudo pm2 start ./bin/www
-      echo "hi"
+      npm run start:dev
       '''
       }
       }
