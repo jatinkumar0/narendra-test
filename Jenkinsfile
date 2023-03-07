@@ -12,7 +12,8 @@ agent any
       stage ('Deploy'){
       steps {
       sh ''' 
-      npm run start:dev
+      pm2 delete all
+      pm2 start bin/www
       '''
       }
       }
