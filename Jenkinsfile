@@ -12,8 +12,8 @@ agent any
       stage ('Deploy'){
       steps {
       sh ''' 
-      pm2 delete all
-      pm2 start bin/www
+      sudo pm2 delete all
+      sudo pm2 start bin/www
       '''
       }
       }
