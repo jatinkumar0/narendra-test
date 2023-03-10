@@ -4,7 +4,7 @@ agent any
     stage ('Build'){
       steps {
       sh ''' 
-      docker build -t bhupesh-test:v$BUILD_NUMBER
+      docker build -t bhupesh-test:v$BUILD_NUMBER .
       '''
       }
       }
