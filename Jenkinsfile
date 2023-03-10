@@ -4,7 +4,7 @@ agent any
     stage ('Build'){
       steps {
       sh ''' 
-      npm install
+      docker build -t bhupesh-test:v$BUILD_NUMBER
       '''
       }
       }
@@ -12,8 +12,9 @@ agent any
       stage ('Deploy'){
       steps {
       sh ''' 
-      sudo pm2 delete all
-      sudo pm2 start bin/www
+      docker stop bhupesh-test
+      docker rm bhupesh-test
+      docker run -itd -p 3000:3000 --name bhupesh-test bhupesh-test:v$BUILD_NUMBER
       '''
       }
       }
