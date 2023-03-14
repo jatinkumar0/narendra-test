@@ -4,8 +4,11 @@ agent any
     stage ('ssh'){
       steps {
         sshagent(credentials : ['pem-file']) {
-            sh 'ssh -o StrictHostKeyChecking=no ec2-user@10.0.2.153 uptime'
-            sh 'ssh -v ec2-user@10.0.2.153'
+        sh '''
+            [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
+            ssh-keyscan -t rsa,dsa 10.0.2.153 >> ~/.ssh/known_hosts
+            ssh ec2-user@10.0.2.153
+        '''
       }
     }
     }
