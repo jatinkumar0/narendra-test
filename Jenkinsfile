@@ -7,7 +7,7 @@ agent any
         sh '''
             [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
             ssh-keyscan -t rsa,dsa 13.210.58.98 >> ~/.ssh/known_hosts
-            ssh ec2-user@13.210.58.98
+            ssh ec2-user@13.210.58.98 mkdir bhupesh
         '''
       }
     }
