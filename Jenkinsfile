@@ -6,8 +6,8 @@ agent any
         sshagent(credentials : ['pem-file']) {
         sh '''
             [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-            ssh-keyscan -t rsa,dsa 10.0.2.153 >> ~/.ssh/known_hosts
-            ssh ec2-user@10.0.2.153
+            ssh-keyscan -t rsa,dsa 13.210.58.98 >> ~/.ssh/known_hosts
+            ssh ec2-user@13.210.58.98
         '''
       }
     }
