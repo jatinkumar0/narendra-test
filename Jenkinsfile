@@ -7,7 +7,7 @@ agent any
         sh '''
             [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
             ssh-keyscan -t rsa,dsa 13.210.58.98 >> ~/.ssh/known_hosts
-            ssh ec2-user@13.210.58.98 mkdir sudo yum install httpd -y
+            ssh ec2-user@13.210.58.98 sudo yum install httpd -y
             ssh ec2-user@13.210.58.98 sudo systemctl start httpd
             ssh ec2-user@13.210.58.98 sudo systemctl status httpd
         '''
