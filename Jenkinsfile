@@ -8,6 +8,7 @@ agent any
             sh 'ssh -v ec2-user@10.0.2.153'
       }
     }
+    }
 /*
     stage ('Build'){
       steps {
