@@ -1,6 +1,7 @@
 pipeline {
 agent any
   stages {
+/*
     stage ('ssh'){
       steps {
         sshagent(credentials : ['pem-file']) {
@@ -14,7 +15,16 @@ agent any
       }
     }
     }
-/*
+ */
+    
+    stage ('Test Dockerfile'){
+      steps{
+      sh '''
+      sudo npm install -g dockerlint
+      sudo dockerlint Dockerfile
+      '''
+      }
+    }
     stage ('Build'){
       steps {
       sh ''' 
@@ -31,8 +41,7 @@ agent any
       sudo docker run -itd -p 3000:3000 --name bhupesh-test bhupesh-test:v$BUILD_NUMBER
       '''
       }
-      }
-  */  
+      } 
   }
 
 
