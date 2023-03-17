@@ -32,7 +32,14 @@ agent any
       '''
       }
       }
-  
+    stage ('Scan Docker Image'){
+      steps{
+      sh '''
+      sudo yum install docker-scan-plugin
+      sudo docker scan bhupesh-test:v$BUILD_NUMBER
+      '''
+      }
+    }
       stage ('Deploy'){
       steps {
       sh ''' 
@@ -42,6 +49,8 @@ agent any
       '''
       }
       } 
+    
+    
   }
 
 
