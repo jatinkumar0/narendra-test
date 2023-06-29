@@ -10,8 +10,11 @@ steps{
 
 stage('Deploy'){
 steps{
-  sh 'sudo docker rm vishal'
-  sh 'sudo docker run -itd -p 3000:3000 --name vishal vishal:$BUILD_NUMBER'
+  sh '''
+      sudo docker stop vishal
+      sudo docker rm vishal'
+      sudo docker run -itd -p 3000:3000 --name vishal vishal:$BUILD_NUMBER
+     '''
 }
 }
 
